@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Special Surprise for [Her Name] 💌</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Caveat:wght@400;700&family=Great+Vibes&display=swap">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff5f7, #ffebee, #ffc1e3);
+      font-family: 'Caveat', cursive;
+      color: #5c1e3a;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .envelope-container {
+      text-align: center;
+      max-width: 90%;
+      padding: 2rem 1rem;
+    }
+
+    .envelope {
+      width: 300px; max-width: 90%;
+      height: 200px;
+      margin: 0 auto 2rem;
+      position: relative;
+      background: #fadadd;
+      border-radius: 10px 10px 50% 50%;
+      box-shadow: 0 10px 30px rgba(199,21,133,0.25);
+      cursor: pointer;
+      transition: transform 0.6s;
+    }
+
+    .envelope:hover { transform: scale(1.08); }
+
+    .flap {
+      position: absolute;
+      top: -70px; left: 0; right: 0;
+      height: 90px;
+      background: #ff9aab;
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      transition: transform 0.8s;
+    }
+
+    .envelope.open .flap { transform: translateY(-110px) rotateX(180deg); }
+
+    .photo-reveal {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.5s;
+      background: url('https://i.postimg.cc/Vs433216/IMG-8056.jpg') center/cover no-repeat; /* ← Replace with her photo link */
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .envelope.open .photo-reveal { opacity: 1; }
+
+    h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 12vw, 5.5rem); color: #c2185b; margin-bottom: 1rem; }
+    p.teaser { font-size: clamp(1.4rem, 5vw, 2rem); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.5; }
+    button.open-btn {
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      padding: 1rem 3rem;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255,20,147,0.4);
+      transition: all 0.4s;
+    }
+    button.open-btn:hover { transform: scale(1.1) translateY(-5px); }
+
+    .petal { position: absolute; width: 35px; height: 35px; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100"><path fill="%23ff85a2" d="M50 15 C20 0, 0 30, 15 60 C30 90, 70 90, 85 60 C100 30, 80 0, 50 15 Z"/></svg>') center/contain; opacity: 0.7; animation: floatP 20s linear infinite; pointer-events:none; }
+
+    @keyframes floatP { 0% { transform: translateY(-120vh) rotate(0deg) scale(0.5); opacity:0; } 10% { opacity:0.8; } 100% { transform: translateY(120vh) rotate(720deg) scale(0.9); opacity:0; } }
+
+    @media (max-width: 600px) {
+      .envelope { width: 240px; height: 160px; }
+      .flap { top: -50px; height: 70px; }
+      .photo-reveal { background-size: cover; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="petal" style="left:15%; animation-duration:22s;"></div>
+  <div class="petal" style="left:45%; animation-duration:18s; animation-delay:4s;"></div>
+  <div class="petal" style="left:75%; animation-duration:25s; animation-delay:8s;"></div>
+
+  <div class="envelope-container">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="photo-reveal"></div>
+    </div>
+    <h1>Amrita 💕</h1>
+    <p class="teaser">I made this little surprise just for you...<br>Tap the envelope when you're ready to open my heart ♡</p>
+    <button class="open-btn" id="openBtn">Open My Love 💌</button>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const openBtn = document.getElementById('openBtn');
+
+    openBtn.addEventListener('click', () => {
+      envelope.classList.add('open');
+      setTimeout(() => {
+        window.location.href = 'proposal.html';
+      }, 1800); // Delay for photo reveal effect
+    });
+
+    // Floating petals
+    function spawnPetal() {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 30000);
+    }
+    setInterval(spawnPetal, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will You Make Me the Happiest? 💕</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Caveat:wght@700&family=Great+Vibes&display=swap">
+  <style>
+    /* Reuse many styles from previous + responsive adjustments */
+    body { 
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1, #ffb6c1);
+      font-family: 'Caveat', cursive; 
+      color: #4a2c3d;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3.5rem, 12vw, 6.5rem); color: #c71585; margin: 1rem 0; animation: heartbeat 3s infinite; }
+
+    .question { font-size: clamp(1.8rem, 6vw, 2.8rem); line-height: 1.5; margin: 2rem 0 4rem; }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; position: relative; min-height: 120px; }
+
+    button {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      padding: 1rem 3.5rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.4s;
+    }
+
+    #yes { background: linear-gradient(45deg, #ff69b4, #ff1493); color: white; }
+    #yes:hover { transform: scale(1.15) translateY(-10px); box-shadow: 0 15px 40px rgba(255,20,147,0.5); }
+
+    #no {
+      background: #e0e0e0;
+      color: #555;
+      position: absolute;
+      transition: all 0.3s ease-out;
+    }
+
+    @keyframes heartbeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+    @media (max-width: 600px) {
+      .buttons { flex-direction: column; gap: 4rem; }
+      #no { position: static; margin-top: 2rem; }
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column; /* Stack on mobile */
+        gap: 3rem;
+        align-items: center;
+    }
+
+    #no {
+        position: static !important; /* Override absolute on small screens */
+        margin-top: 2rem;
+        width: 80%;
+        max-width: 300px;
+    }
+
+    @media (min-width: 600px) {
+        .buttons { flex-direction: row; }
+        #no { position: absolute !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Amrita 💗</h1>
+    <p class="question">My heart has been practicing this question forever...<br><strong>Will you be my Valentine and go on a beautiful date with me? ♡</strong></p>
+
+    <div class="buttons">
+      <button id="yes">Yes! I'd love to! 🥰</button>
+      <button id="no">No...</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 100);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top  = y + 'px';
+      noBtn.style.position = 'absolute';
+    });
+
+    noBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("Wait... are you sure? My heart is shaking 😭 Let me try to change your mind with more cuteness...");
+    });
+
+    document.getElementById('yes').onclick = () => {
+      window.location.href = 'yes.html';
+    };
+  </script>
+</body>
+</html>

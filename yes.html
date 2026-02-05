@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You Said Yes... My World is Complete! 🥹💖</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Caveat:wght@700&display=swap">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff0f5, #ffebee, #ffd1dc);
+      color: #5c1e3a;
+      font-family: 'Caveat', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 { font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 8rem); color: #c2185b; margin-bottom: 1.5rem; animation: beat 2s infinite; }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(199,21,133,0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.5s ease-out;
+    }
+
+    .gallery img.show { opacity: 1; transform: translateY(0); }
+
+    .letter {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 1.5rem auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 2s ease-out;
+    }
+
+    .letter.show { opacity: 1; transform: translateY(0); }
+
+    .big-heart { font-size: clamp(6rem, 20vw, 12rem); margin: 2rem 0; animation: beat 1.6s infinite; }
+
+    @keyframes beat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.15); } }
+
+    @media (max-width: 600px) {
+      .gallery img { width: 90vw; height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>YES!!! You Made My Heart Explode with Happiness! 🥹💗</h1>
+
+  <div class="gallery">
+    <img src="https://i.postimg.cc/zXrVcbzN/IMG-E6737.jpg" alt="Our cute moment">
+    <img src="https://i.postimg.cc/X7Ry3HkV/IMG-E7250.jpg" alt="Smiling together">
+    <img src="https://i.postimg.cc/bJ1qxg2n/IMG-9316.jpg" alt="Romantic memory">
+    <!-- Add more <img> tags with your photo links -->
+  </div>
+
+  <div class="letter" id="l1">Amrita, every photo reminds me how lucky I am to have you...</div>
+  <div class="letter" id="l2">You said yes to our Valentine's date, and now I can't wait to create even more beautiful memories.</div>
+  <div class="letter" id="l3">Dinner under the stars, your favorite dessert, and endless laughs — just us.</div>
+  <div class="letter" id="l4">Thank you for being my everything. I love you more than words can say. ♡</div>
+
+  <div class="big-heart">💞</div>
+
+  <script>
+    // Reveal photos & letters
+    const photos = document.querySelectorAll('.gallery img');
+    const lines = document.querySelectorAll('.letter');
+
+    let delay = 800;
+    photos.forEach((photo, i) => {
+      setTimeout(() => photo.classList.add('show'), delay + i * 1000);
+    });
+
+    delay += photos.length * 1000 + 500;
+    lines.forEach((line, i) => {
+      setTimeout(() => line.classList.add('show'), delay + i * 2800);
+    });
+
+    // Floating petals
+    function createPetal() {
+      const p = document.createElement('div');
+      p.style.cssText = `position:absolute; width:40px; height:40px; left:${Math.random()*100}vw; background:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100"><path fill="%23ff85a2" d="M50 15 C20 0, 0 30, 15 60 C30 90, 70 90, 85 60 C100 30, 80 0, 50 15 Z"/></svg>') center/contain; opacity:0.6; pointer-events:none; animation:float 25s linear infinite;`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 40000);
+    }
+    setInterval(createPetal, 700);
+  </script>
+</body>
+</html>
